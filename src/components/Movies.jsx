@@ -10,6 +10,16 @@ class Movies extends Component {
       genres: genres
     };
   }
+
+  handleClick = id => {
+    var filtered = this.state.data.filter(function(el) {
+      return el._id !== id;
+    });
+    this.setState({
+      data: filtered
+    });
+  };
+
   render() {
     return (
       <table className="table">
@@ -24,13 +34,18 @@ class Movies extends Component {
         </thead>
         <tbody>
           {this.state.data.map(x => (
-            <tr>
+            <tr key={x._id}>
               <td>{x.title}</td>
               <td>{x.genre.name}</td>
               <td>{x.numberInStock}</td>
               <td>{x.dailyRentalRate}</td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.handleClick(x._id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
