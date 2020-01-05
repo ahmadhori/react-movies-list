@@ -1,12 +1,16 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import { genres } from "../services/fakeGenreService";
+import Pager from "./common/pager";
+
 class Movies extends Component {
     state = {};
     constructor(props) {
         super(props);
         this.state = {
-            data: getMovies()
+            data: getMovies(),
+            currentPage: 1,
+            pageLength: 4
         };
     }
 
@@ -49,6 +53,7 @@ class Movies extends Component {
                         ))}
                     </tbody>
                 </table>
+                <Pager numofItems="13" pageSize="4" currPage="2" />
             </React.Fragment>
         );
     }
