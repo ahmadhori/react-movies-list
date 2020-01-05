@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import { genres } from "../services/fakeGenreService";
 import Pager from "./common/pager";
+import { getCurrPageData } from "../utils/pager";
 
 class Movies extends Component {
     state = {};
@@ -10,7 +11,7 @@ class Movies extends Component {
         this.state = {
             data: getMovies(),
             currentPage: 1,
-            pageLength: 4
+            pageLength: 3
         };
     }
 
@@ -23,7 +24,18 @@ class Movies extends Component {
         });
     };
 
+    handlePagerClick = id => {
+        console.log("Hello ", id);
+
+        this.setState({
+            currentPage: id
+        });
+        console.log(this.state);
+    };
+
     render() {
+        console.log(getCurrPageData(this.state.data, this.state.currentPage, this.state.pageLength));
+
         return (
             <React.Fragment>
                 {this.renderHeader()}
@@ -38,7 +50,7 @@ class Movies extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.data.map(x => (
+                        {getCurrPageData(this.state.data, this.state.currentPage, this.state.pageLength).map(x => (
                             <tr key={x._id}>
                                 <td>{x.title}</td>
                                 <td>{x.genre.name}</td>
@@ -53,14 +65,12 @@ class Movies extends Component {
                         ))}
                     </tbody>
                 </table>
-                <Pager numofItems={13} pageSize={4} currPage={2} />
+                <Pager numofItems={this.state.data.length} pageSize={this.state.pageLength} currPage={this.state.currentPage} onClick={this.handlePagerClick} />
             </React.Fragment>
         );
     }
 
-    componentDidMount = () => {
-        console.log(this.state);
-    };
+    componentDidMount = () => {};
 
     renderHeader() {
         if (this.state.data.length === 0) {

@@ -1,19 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 
 const Pager = props => {
-    let numOfPages = Math.ceil(props.numofItems / props.pageSize);
+    const numOfPages = Math.ceil(props.numofItems / props.pageSize);
 
-    var p = _.range(1, numOfPages + 1);
-    console.log("cccc ", p);
+    const p = _.range(1, numOfPages + 1);
 
     return (
         <nav aria-label="Page navigation example" className="m-3">
             <ul className="pagination">
                 {p.map(x => (
-                    <li className={x != props.currPage ? "page-item" : "page-item active"} key={x}>
-                        <a className="page-link">{x}</a>
+                    <li className={x !== props.currPage ? "page-item" : "page-item active"} key={x} onClick={() => props.onClick(x)}>
+                        <a className="page-link" href="/#">
+                            {x}
+                        </a>
                     </li>
                 ))}
             </ul>
