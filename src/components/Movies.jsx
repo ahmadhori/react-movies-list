@@ -53,7 +53,7 @@ class Movies extends Component {
                         ))}
                     </tbody>
                 </table>
-                <Pager numofItems="13" pageSize="4" currPage="2" />
+                <Pager numofItems={13} pageSize={4} currPage={2} />
             </React.Fragment>
         );
     }
