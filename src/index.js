@@ -10,15 +10,17 @@ import NavBar from "./components/common/navBar";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
 import Main from "./components/home";
+import MovieDetails from "./components/movieDetails";
 
 ReactDOM.render(
     <BrowserRouter>
         <NavBar />
         <div className="content">
             <Switch>
+                <Route path="/movies/:id" component={MovieDetails} />
                 <Route path="/movies" component={Movies} />
-                <Route path="/customers" render={props => <Customers sortBy="name" {...props} />} />
-                <Route path="/rentals" component={Rentals} />
+                <Route path="/customers" component={Customers} />} />
+                <Route path="/rentals" render={props => <Rentals sortBy="name" {...props} />} />
                 <Route path="/" component={Main} />
             </Switch>
         </div>

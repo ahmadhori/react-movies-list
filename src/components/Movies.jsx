@@ -5,6 +5,7 @@ import Pager from "./common/pager";
 import { getCurrPageData } from "../utils/pager";
 import ListGroup from "./common/listGroup";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 class Movies extends Component {
     state = {};
@@ -16,6 +17,7 @@ class Movies extends Component {
             currentPage: 1,
             pageLength: 3
         };
+        console.log("Movies Constructor");
     }
 
     componentDidMount() {
@@ -45,8 +47,6 @@ class Movies extends Component {
     };
 
     render() {
-        //console.log(getCurrPageData(this.state.movies, this.state.currentPage, this.state.pageLength));
-        //console.log(getMovies());
         console.log("this.state.movies", this.state.movies);
         var currPageMovies;
         var filteredByGenre;
@@ -88,7 +88,9 @@ class Movies extends Component {
                                     <tbody>
                                         {currPageMovies.map(x => (
                                             <tr key={x._id}>
-                                                <td>{x.title}</td>
+                                                <td>
+                                                    <Link to={"movies/" + x._id}>{x.title}</Link>
+                                                </td>
                                                 <td>{x.genre.name}</td>
                                                 <td>{x.numberInStock}</td>
                                                 <td>{x.dailyRentalRate}</td>
