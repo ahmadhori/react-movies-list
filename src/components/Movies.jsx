@@ -21,7 +21,7 @@ class Movies extends Component {
     componentDidMount() {
         this.setState({
             movies: getMovies(),
-            genres: [{ name: "All Genre" }, ...getGenres()]
+            genres: [{ name: "All Genre", _id: "" }, ...getGenres()]
         });
     }
 
@@ -50,7 +50,7 @@ class Movies extends Component {
         console.log("this.state.movies", this.state.movies);
         var currPageMovies;
         var filteredByGenre;
-        if (this.state.selectedGenre != null && this.state.selectedGenre._id != null) {
+        if (this.state.selectedGenre != null && this.state.selectedGenre._id) {
             filteredByGenre = this.state.movies.filter(x => _.isEqual(x.genre, this.state.selectedGenre));
         } else {
             filteredByGenre = this.state.movies;

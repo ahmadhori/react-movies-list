@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/common/navBar";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
-import Main from "./components/main";
+import Main from "./components/home";
 
 ReactDOM.render(
     <BrowserRouter>

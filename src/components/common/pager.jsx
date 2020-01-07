@@ -12,9 +12,7 @@ const Pager = props => {
             <ul className="pagination">
                 {p.map(x => (
                     <li className={x !== props.currPage ? "page-item" : "page-item active"} key={x} onClick={() => props.onClick(x)}>
-                        <a className="page-link" href="/#">
-                            {x}
-                        </a>
+                        <button className="page-link">{x}</button>
                     </li>
                 ))}
             </ul>
