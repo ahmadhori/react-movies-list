@@ -17,7 +17,7 @@ ReactDOM.render(
         <div className="content">
             <Switch>
                 <Route path="/movies" component={Movies} />
-                <Route path="/customers" component={Customers} />
+                <Route path="/customers" render={props => <Customers sortBy="name" {...props} />} />
                 <Route path="/rentals" component={Rentals} />
                 <Route path="/" component={Main} />
             </Switch>
