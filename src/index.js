@@ -17,7 +17,7 @@ ReactDOM.render(
         <NavBar />
         <div className="content">
             <Switch>
-                <Route path="/movies/:id" component={MovieDetails} />
+                <Route path="/movies/:id/:name?" component={MovieDetails} />
                 <Route path="/movies" component={Movies} />
                 <Route path="/customers" component={Customers} />} />
                 <Route path="/rentals" render={props => <Rentals sortBy="name" {...props} />} />

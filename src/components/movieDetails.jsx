@@ -6,7 +6,14 @@ class MovieDetails extends Component {
         this.state = {};
     }
     render() {
-        return <h1>MovieDetails Component for movie id {this.props.match.params.id}</h1>;
+        return (
+            <h1>
+                MovieDetails Component for movie <br />
+                id: {this.props.match.params.id}
+                <br />
+                name: {this.props.match.params.name}
+            </h1>
+        );
     }
 }
 
