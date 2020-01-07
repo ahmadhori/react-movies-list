@@ -121,9 +121,9 @@ class Movies extends Component {
 
     renderHeader() {
         if (this.state.movies.length === 0) {
-            return <h3 className="m-3">There is no movies in our database</h3>;
+            return <h3 className="m-3">There are no movies in our database</h3>;
         } else {
-            return <h3 className="m-3">There is total {this.state.movies.length} movies in our database</h3>;
+            return <h3 className="m-3">There are total {this.state.movies.length} movies in our database</h3>;
         }
     }
 }
