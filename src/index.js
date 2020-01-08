@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import Movies from "./components/Movies";
@@ -11,6 +11,7 @@ import Customers from "./components/customers";
 import Rentals from "./components/rentals";
 import Main from "./components/home";
 import MovieDetails from "./components/movieDetails";
+import NotFound from "./components/notFound";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -21,7 +22,9 @@ ReactDOM.render(
                 <Route path="/movies" component={Movies} />
                 <Route path="/customers" component={Customers} />} />
                 <Route path="/rentals" render={props => <Rentals sortBy="name" {...props} />} />
-                <Route path="/" component={Main} />
+                <Route path="/" exact component={Main} />
+                <Route path="/not-found" component={NotFound} />
+                <Redirect to="/not-found" component={Main} />
             </Switch>
         </div>
     </BrowserRouter>,
