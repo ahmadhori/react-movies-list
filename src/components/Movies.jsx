@@ -62,7 +62,9 @@ class Movies extends Component {
         return (
             <React.Fragment>
                 <div className="container">
-                    {this.renderHeader()}
+                    {this.headerMsg()}
+                    {this.queryStringMsg()}
+
                     <div className="row">
                         <div className="col-md-3">
                             <ListGroup
@@ -121,12 +123,34 @@ class Movies extends Component {
         );
     }
 
-    renderHeader() {
+    headerMsg() {
         if (this.state.movies.length === 0) {
             return <h3 className="m-3">There are no movies in our database</h3>;
         } else {
             return <h3 className="m-3">There are total {this.state.movies.length} movies in our database</h3>;
         }
+    }
+    queryStringMsg() {
+        if (this.props.location.search) {
+            const queryString = require("query-string");
+            const parsed = queryString.parse(this.props.location.search);
+
+            return (
+                <div>
+                    <h2 className="m-2">There is query string</h2>
+                    {Object.keys(parsed).map(x => (
+                        <h2 className="m-2">
+                            {x} : {parsed[x]}
+                        </h2>
+                    ))}
+                </div>
+            );
+        } else {
+            return <h2>There is no query string</h2>;
+        }
+        //{Object.keys(parsed).map(key => {
+        //    return <td className="whiteSpaceNoWrap">{parsed[key]}</td>;
+        //})}
     }
 }
 
