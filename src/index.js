@@ -12,12 +12,14 @@ import Rentals from "./components/rentals";
 import Main from "./components/home";
 import MovieDetails from "./components/movieDetails";
 import NotFound from "./components/notFound";
+import Login from "./components/login";
 
 ReactDOM.render(
     <BrowserRouter>
         <NavBar />
-        <div className="content">
+        <main className="container">
             <Switch>
+                <Route path="/login" component={Login} />
                 <Route path="/movies/:id/:name?" component={MovieDetails} />
                 <Route path="/movies" component={Movies} />
                 <Route path="/customers" component={Customers} />} />
@@ -26,7 +28,7 @@ ReactDOM.render(
                 <Route path="/not-found" component={NotFound} />
                 <Redirect to="/not-found" component={Main} />
             </Switch>
-        </div>
+        </main>
     </BrowserRouter>,
     document.getElementById("root")
 );
